@@ -36,7 +36,9 @@ public class HttpClientsListener extends AbstractVerticle {
                     break;
             }
         });
-        httpServer.listen(9999);
+        int port = 4242;
+        httpServer.listen(port);
+        logger.info("Client listener listening on port: {}", port);
     }
 
     private void deleteHandler(HttpServerRequest request) {
