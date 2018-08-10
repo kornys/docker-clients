@@ -11,7 +11,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -23,6 +22,7 @@ public class Executor {
     private Process process;
     private String stdOut;
     private String stdErr;
+    private int retCode;
     private StreamGobbler stdOutReader;
     private StreamGobbler stdErrReader;
     private Path logPath;
@@ -52,6 +52,18 @@ public class Executor {
         return stdErr;
     }
 
+    public boolean isRunning() {
+        return process.isAlive();
+    }
+
+    public int getRetCode() {
+        if (isRunning()) {
+            return -1;
+        } else {
+            return process.exitValue();
+        }
+    }
+
     /**
      * Method executes external command
      *
@@ -61,7 +73,7 @@ public class Executor {
      * @throws InterruptedException
      * @throws ExecutionException
      */
-    public int execute(ArrayList<String> commands) throws IOException, InterruptedException, ExecutionException {
+    public int execute(List<String> commands) throws IOException, InterruptedException, ExecutionException {
         return execute(commands, 0);
     }
 
