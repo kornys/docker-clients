@@ -59,6 +59,11 @@
             <artifactId>vertx-core</artifactId>
             <version>3.5.1</version>
         </dependency>
+        <dependency><!-- https://github.com/EnMasseProject/enmasse -->
+            <groupId>io.enmasse</groupId>
+            <artifactId>systemtests</artifactId>
+            <version>0.21-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 

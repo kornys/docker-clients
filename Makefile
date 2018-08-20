@@ -6,7 +6,12 @@ ifeq ($(SKIP_TESTS),true)
 MAVEN_ARGS="-DskipTests"
 endif
 
-all: clean_java package_java build_java_clients docker_build docker_tag docker_push
+all: clean_java enmasse_dependencies package_java build_java_clients docker_build docker_tag docker_push
+
+enmasse_dependencies:
+	rm -rf enmasse
+	git clone https://github.com/EnMasseProject/enmasse.git
+	mvn install -f enmasse/systemtests/pom.xml -DskipTests=true
 
 package_java:
 	mvn package -DskipTests $(MAVEN_ARGS)
