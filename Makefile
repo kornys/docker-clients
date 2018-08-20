@@ -11,10 +11,10 @@ all: clean_java enmasse_dependencies package_java build_java_clients docker_buil
 enmasse_dependencies:
 	rm -rf enmasse
 	git clone https://github.com/EnMasseProject/enmasse.git
-	mvn install -f enmasse/systemtests/pom.xml -DskipTests=true
+	(cd enmasse; mvn -U clean install -pl systemtests -am -DskipTests=true)
 
 package_java:
-	mvn package -DskipTests $(MAVEN_ARGS)
+	mvn -U clean package -DskipTests $(MAVEN_ARGS)
 
 clean_java:
 	mvn clean $(MAVEN_ARGS)
