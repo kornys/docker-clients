@@ -13,6 +13,7 @@ buildNumber.properties
 .mvn/timing.properties
 build
 cli-java
+enmasse
 
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jars
