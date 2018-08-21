@@ -1,5 +1,6 @@
 # docker-clients
 
+[![Build Status](https://travis-ci.org/kornys/docker-clients.svg?branch=master)](https://travis-ci.org/kornys/docker-clients)
 
 ### Create image
 ```bash
