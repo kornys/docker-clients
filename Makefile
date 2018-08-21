@@ -10,6 +10,8 @@ all: clean_java enmasse_dependencies package_java build_java_clients docker_buil
 
 travis: clean_java enmasse_dependencies package_java build_java_clients docker_build
 
+image: travis
+
 enmasse_dependencies:
 	rm -rf enmasse
 	git clone https://github.com/EnMasseProject/enmasse.git
