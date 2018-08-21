@@ -9,4 +9,4 @@ jdk:
 - oraclejdk8
 
 script:
-- "make clean_java && make enmasse_dependencies && make package_java && make build_java_clients && make docker_build"
+- "make travis"

@@ -8,6 +8,8 @@ endif
 
 all: clean_java enmasse_dependencies package_java build_java_clients docker_build docker_tag docker_push
 
+travis: clean_java enmasse_dependencies package_java build_java_clients docker_build
+
 enmasse_dependencies:
 	rm -rf enmasse
 	git clone https://github.com/EnMasseProject/enmasse.git
