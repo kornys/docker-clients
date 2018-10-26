@@ -8,6 +8,7 @@ RUN chmod 777 /client_executable
 ADD build/java_clients/cli-activemq.jar /client_executable
 ADD build/java_clients/cli-artemis-jms.jar /client_executable
 ADD build/java_clients/cli-qpid-jms.jar /client_executable
+ADD build/java_clients/cli-paho-java.jar /client_executable
 ENV JAVA_OPTS "-DLOG_LEVEL=info"
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -

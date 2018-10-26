@@ -72,7 +72,7 @@
         <dependency><!-- https://github.com/EnMasseProject/enmasse -->
             <groupId>io.enmasse</groupId>
             <artifactId>systemtests</artifactId>
-            <version>0.21-SNAPSHOT</version>
+            <version>0.24-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

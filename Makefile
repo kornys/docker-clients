@@ -1,6 +1,7 @@
 VERSION     ?= 1.0-SNAPSHOT
 SKIP_TESTS  ?= true
 DOCKER_ORG	?= docker.io/kornysd
+TAG ?= latest
 
 ifeq ($(SKIP_TESTS),true)
 MAVEN_ARGS="-DskipTests"
@@ -27,16 +28,16 @@ clean_java:
 clean: clean_java
 
 docker_build: package_java
-	if [ -f Dockerfile ]; then docker build --build-arg version=$(VERSION) -t docker-clients:latest . ; fi
+	if [ -f Dockerfile ]; then docker build --build-arg version=$(VERSION) -t docker-clients:$(TAG) . ; fi
 	docker images | grep docker-clients
 
 build_java_clients:
 	./build_java_clients.sh
 
 docker_push:
-	docker push $(DOCKER_ORG)/docker-clients:latest
+	docker push $(DOCKER_ORG)/docker-clients:$(TAG)
 
 docker_tag:
-	docker tag docker-clients:latest $(DOCKER_ORG)/docker-clients:latest
+	docker tag docker-clients:$(TAG) $(DOCKER_ORG)/docker-clients:$(TAG)
 
 .PHONY: clean_java package_java build_java_clients docker_build docker_tag docker_push

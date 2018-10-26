@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.Executors;
 
 public class HttpClientsListener extends AbstractVerticle {
     private HttpServer httpServer = null;
@@ -94,7 +95,7 @@ public class HttpClientsListener extends AbstractVerticle {
             JsonArray clientsIDs = new JsonArray();
             for (int i = 0; i < count; i++) {
                 try {
-                    executor.execute(command.getList());
+                    Executors.newSingleThreadExecutor().submit(() -> executor.execute(command.getList()));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
