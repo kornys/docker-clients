@@ -6,7 +6,6 @@ function install_java_client(){
     mkdir -p build/java_clients
     git clone https://github.com/rh-messaging/cli-java.git
 	cd cli-java
-	git checkout c33119eea3f0d4850eafc895ab249ed15abbd266
 	mvn package -B -DskipTests=true
 	cp ./cli-artemis-jms/target/cli-artemis-jms-*.jar ../build/java_clients/cli-artemis-jms.jar
 	cp ./cli-qpid-jms/target/cli-qpid-jms-*.jar ../build/java_clients/cli-qpid-jms.jar
