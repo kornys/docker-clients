@@ -7,10 +7,10 @@ function install_java_client(){
     git clone https://github.com/rh-messaging/cli-java.git
 	cd cli-java
 	mvn package -B -DskipTests=true
-	cp ./cli-artemis-jms/target/cli-artemis-jms-*.jar ../build/java_clients/cli-artemis-jms.jar
-	cp ./cli-qpid-jms/target/cli-qpid-jms-*.jar ../build/java_clients/cli-qpid-jms.jar
-	cp ./cli-activemq/target/cli-activemq-*.jar ../build/java_clients/cli-activemq.jar
-	cp ./cli-paho-java/target/cli-paho-java-*.jar ../build/java_clients/cli-paho-java.jar
+	cp ./cli-artemis-jms/target/cli-artemis-jms-*-LATEST.jar ../build/java_clients/cli-artemis-jms.jar
+	cp ./cli-qpid-jms/target/cli-qpid-jms-*-LATEST.jar ../build/java_clients/cli-qpid-jms.jar
+	cp ./cli-activemq/target/cli-activemq-*-LATEST.jar ../build/java_clients/cli-activemq.jar
+	cp ./cli-paho-java/target/cli-paho-java-*-SNAPSHOT-RELEASE.jar ../build/java_clients/cli-paho-java.jar
 }
 
 install_java_client
