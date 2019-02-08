@@ -12,8 +12,11 @@ import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 
 public class HttpClientsListener extends AbstractVerticle {
@@ -95,7 +98,13 @@ public class HttpClientsListener extends AbstractVerticle {
             JsonArray clientsIDs = new JsonArray();
             for (int i = 0; i < count; i++) {
                 try {
-                    Executors.newSingleThreadExecutor().submit(() -> executor.execute(command.getList()));
+                    CompletableFuture.runAsync(() -> {
+                        try {
+                            executor.execute(command.getList());
+                        } catch (IOException | InterruptedException | ExecutionException e) {
+                            e.printStackTrace();
+                        }
+                    }, runnable -> new Thread(runnable).start());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
